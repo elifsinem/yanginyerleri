@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:fixed; top:0; bottom:0; width:50%; }
+    </style>
+</head>
+<body>
+
+
+
+
+<style>
+#features {
+    width: 50%;
+    margin-left: 50%;
+    font-family: sans-serif;
+    overflow-y: scroll;
+    background-color: #fafafa;
+}
+section {
+    padding:  25px 50px;
+    line-height: 25px;
+    border-bottom: 1px solid #ddd;
+    opacity: 0.25;
+    font-size: 13px;
+}
+section.active {
+    opacity: 1;
+}
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 400px;
+}
+</style>
+
+<div id='map'></div>
+<div id='features'>
+    <section id='losangeles' class='active'>
+        <h3>İstanbul Ansiklopedisi</h3>
+        <p>Yangın Yerleri</p>
+    </section>
+    <section id='boyleheights'>
+        <p>İstanbul Ansiklopedisi'nin ilk dört cildindeki yangın yerleri haritasıdır.</p>
+    </section>
+    <section id='centralave'>
+        <h3>AYVANSARAY YANGINLARI</h3>
+        <p>"İstanbul'un bu semti, tarihî büyük yangınların birkaçında baştan başa harap olduktan başka, kendi sınırları içinde çıkan ateş âfeti ile de birkaç defa mahvolmuştur.
+            <p> 1755 (H. 7 Şaban 1168) yangını, ...<p>
+                <p> 1861 (22 Birinci Teşrin 1278) yangını - Lonca'da 219 ev yandı.<p>
+                    <p>1863 (31 Temmuz 1280) yangını - Lonca'da 79 ev yandı.</p>
+                    <p>1878 (19 Nisan 1296) yangını - Lonca'da 67 ev yandı." Cilt-3  s. 1653-1655</p>
+    </section>
+    <section id='chavezravine'>
+        <h3>BALİPAŞA CAMİİ</h3>
+        <p>"Sarıgüzelde, Halıcılara bakan sathı mailde, Hüsrevpaşa Türbesi yakınındaki kubbeli camidir. Büyük Fatih yangını (1332= M. 1916) esnasında yanmış, kubbesi ve ruvakı yıkılmış, metrük ve harab durmakta iken 1935 de kubbesi, müteakib senelerde de dahili aksamı ve etraf duvarları yapılıp tezyin edilmiş, mamur bir hale konmış ise de son cemaat ruvakından el'an mahrum durmaktadır." Cilt-4  s. 2048-2051</a>
+    </section>
+    <section id='watts'>
+        <h3>BAYAZID YANGIN KULESİ</h3>
+        <img src="https://i.hizliresim.com/BR4vcG.png"></img>
+        <p>"1749'da Küçükpazarda çıkan bir yangın şiddetli bir poyraz ile süratle genişledi, Yeniçerilerin kumandanlık dairesi olan Süleymaniyedeki Agakapusu Sarayı da yandı. ... Agakapusu yeniden yapılır iken geniş iç avlusunun bir köşesine de, büyük şehirde yangın dumanı ve yalımı gözlemek, yangın başlangıcı görülür görülmez şehrin her tarafına ulaklar koşdurulup kolluk tulumbalarını harekete geçirmek için yüksek ve zarif «Yangın kulesi» adı ile ahşab bir kule yapıldı. İstanbul da ilk yangın kulesi budur. En üst kısmı, etrafı fırdolayı camekan bir köşk idi; kulenin günlük bakım işleri, köşkde yangın gözcülüğü, ve yangın kolluklara haber verecek ulaklık hizmeti için acemi oğlanları arasından bu hizmetlere elverişli yirmibeş nefer seçilerek Yangın kulesine yerleşdirildi; ve bu yirmibeş nefer acemi oğlanına «köşklü» adı verildi."</a>
+            <p>"Kundaklanup yakılan ahşap birinci Bayazıd Yangın Kulesinin mimarı Kirkor Amira Balyan; bugün görmekte olduğumuz taş yapı ikinci Bayazıd Yangın Kulesinin mimarı da Senekerim Balyandır"</p>
+            <p>"Son kulenin bu ilk şekli yirmi sene sonra, 1849 da değiştirilmiş, köşkün üstündeki sivri külahlı ve geniş saçaklı ahşab çatı kaldırılmış, köşkün üstüne gemi penceresi gibi dört cihete bakan dört yuvarlak pencereli birer odacıkdan ibaret üç kagir kat daha ilave edilmiştir ve kulenin üstüne etrafı demir parmaklık korkuluklu bir cihannüma taraça yapılmışdır ki buradan bütün İstanbul ve etrafı ayak altında gözün alabildiğine görünür; pek muhteşem bir panoramadır."</p>
+            <p>"1889 da da kulenin üstüne demirden bir bayrak direği-gönderi dikilmiş ve Bayazıd Yangın Kulesi bugün gördüğümüz şeklini almıştır." Cilt-4  s. 2264-2273</p>
+    </section>
+    <section id='unionstation'>
+        <h3>BALIKPAZARI İSKELESİ MESCİDİ</h3>
+        <p>"Balıkpazarı İskelesi önünde, deniz kenarında, bir daire içine çizilmiş sekiz köşe planlı, kagir, bodurca taş minareli küçük bir mesciddi; cemaati çok, ekserisi oradaki bir sıra iskelelerde işleyen kayıkcılar, sandalcılar, Balıkpazarı hammalları idi, beş namaz vaktinde tamamen dolardı.</p>
+        <p>Hadikatül kaydına göre Üçüncü Sultan Mustafanın son yıllarında adını tespit edemediğimiz bir kadın tarafından ahşap olarak yaptırılmıştı, Birinci Abdülhamid zamanında yandı, bir müddet yeri boş kaldı, Üçüncü Selim zamanında İzzet Mehmed Paşa tarafından ikinci Sadırâzamlığında kagir olarak yeniden yaptırıldı; tekrar yandı, bu sefer vakfının geliri ile olundu.</p>
+        <p>1936 da Yeni Camiin önü açılır ve Eminönü meydanı genişletilirken Eminönü Valide Hanının da bulunduğu iki yapı bloku ile beraber yıktırıldı. Türk yapı san'atı bakımından bir kıymet taşımamakla beraber bırakılmış olsaydı, genişleyen meydanın trafiğine engel olmadığı gibi meydanı da süslerdi zannederiz." Cilt-4  s.2027</p>
+        <small id="citation">
+            Github repo <a href='https://github.com/maptimeLA/storymap_tutorial'>Story Map Tutorial</a>
+        </small>
+    </section>
+    <section id='balik'>
+        <h3>BALIKPAZARI KAPUSU</h3>
+        <img src="https://i.hizliresim.com/RT5dcQ.png"></img>
+        <p>"İstanbul şehrini fırdolayı çevirmiş olan Bizans devrinden kalma kule duvarlarının Haliç boyu kapularından biridir; </a>
+        <p>...(B. : Yeni Cami); metrük kaldığı yarım asır içinde camiin etrafi Yahudiler tarafından iskan edilmiş, bina, Istanbulun ilk apartmanları olan beşer altışar katlı, her birinin içinde kırk elli yahudi ailesi oturan gayet büyük yahudhanelerle sarılmıştı. Camiin ihyasına karar verilmezden az evvel o havali büyük bir yangında yanmış ve Köprülü Mehmed Paşa tarafından yanık yahudi emlaki istimlak ettirilerek yahudilere iskan bölgesi olarak Balat ile Hasköy gösterilmişti (B. : Balat); fakat yahudiler, faal bir ticaret merkezi olan Balıkpazarından ayrılamadılar; bir müddet sonra, bilhassa 1683 Viyana bozgununu takip eden keşmekeş devrinden istifade ettiler, sur içine giremedilerse de kale duvarları dışınnda yine büyük, şeddadi yahudhaneler inşa edildi; Balıkpazarı Kapusu dışı bu suretle tekrar bir yahudi mahallesi oldu. Hicri 1139 (M. 1726 - 1727) tarihli ve İstanbul Kadısına hitaben yazılmış bir fermandan öğreniyoruz ki Låle Devrinde, Nevşehirli İbrahim Paşa sadaretinde sur dışında ve Balıkpazarı kapusu önünde insa edilmiş bu Yahudhaneler de câmi yakınında hoş görülmemiş ve yıktırılmıştır, bu suretle Balıkpazarı Kapusunun dışı de bir çarsı boyuna münkalib olmuştur." Cilt-4  s. 2027-2028</p>
+    </section>
+    <section id='fee'>
+        <h3>BALIKPAZARI YANGINLARI</h3>
+        <p>"Balıkpazarı, fetihden bu yana, büyük İstanbul yangınlarının çoğunda tamamen yanmış semtlerden biridir."</a>
+        <p>Bu tarihler: 8 Şubat 1688, 17 mayıs 1688, 8 temmuz 1795, 18 haziran 1874 Cilt-4  s. 2031-2032</p>
+    </section>
+    <section id='aznavur'>
+        <h3>AZNAVUROĞLU</h3>
+        <p>"Onyedinci asır ortalarında İstanbullu ermeni halk şairi, hayatı hakkında en küçük bir kayda rastlanmamıştır, adı türkçe olarak yazdığı iki yangın destanından bilinmektedir. ... REK ise her iki destanın da İstanbul tarihinde en dehşetli ateş afeti olan 1660 yangını için yazılmış olduğunu söylemektedir. ...</a>
+        <p>1660 yangını Osmanlı metinlerinde ayazkaupusundan 'bir tütün içici yaramazın' elinden çıkmış olarak gösterilir. ... bütün Haliç sahilini sarmış olan ateşin Ayazmakapusundan mı, Odunkapusundan mı çıkmış olduğunu halkdan bir ferdin doğru tahkikine imkan yoktur. ..." Cilt-3  s. 1728-1729</p>
+    </section>
+    <section id='bayazidyanginlari'>
+        <h3>BAYAZID YANGINLARI</h3>
+        <p>"-Hicri 7 Receb 1127 (M. 9 Temmuz 1715) yangını-</a>
+        <p>Ateş Bayazıd Camii yanındaki kökcü dükkânlarından çıkdı, Eskinişancı ve Kumkapuya kadar geniş bir sahayı kül etti, Bayazıd Çifte Hamamı ile Simkeşhane (o zamanlar darbhane) yanan binalar arasında idi.</p>
+        <p>-Hicri 8 Şevval 1153 (M. 27 Aralık 1740) yangını-</p>
+        <p>Ateş bir Salı gecesi sabaha karşı bir berber dükkânından çıkdı, evvela bitişiğindeki Cağalazade Kethüdası Mahmud Ağanın konağını sarub yakdı, oradan bir kaç kola ayrılarak bir kolu Bayazıd Camii yanındaki Kağıdcılar Çarşısına, bir kolu da Simkeşhaneye kadar dayandı.</p>
+        <p>-Hicri 28 Şaban 1175 (M. 21 Nisan 1762) yangını-</p>
+        <p>Ateş gece saat 2'de, gün battıkdan iki saat sonra Desterecilerde ihtiyar bir kadının evinden çıkdı ... Divanyolu Çarşısı, Tavşantaşından Eskinişancı ve Langaya kadar uzanan mahalleler tamamen kül oldu. En son yanan binalardan biri de devrin sadırazamı Koca Ragıb Paşanın konağı oldu; ...</p>
+        <p>-Hicri 1327 (M. 1909) yangını-</p>
+        <p>Emin bey mahallesinde 111 bina yandı." Cilt-4  s.2273</p>
+    </section>
+</div>
+<script>
+//This is a variable that contains an access key to use the services from Mapbox. Please make sure you create an account and replace what's in the quotes with your own key"
+//The key shown here is a one-time use key for this tutorial. It will expire on 7/1/2017
+mapboxgl.accessToken = 'pk.eyJ1IjoiY3J1emluNzN2dyIsImEiOiJjajJ3djc3ZHAwMHh1MzhxcGY2cmtmMjF5In0.wuIHWedRimzqE_NjYh3x0g';
+
+//This function create the map to load onto your web browser
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: [29.0136, 41.1122],
+    zoom: 9.25,
+    bearing: 24.3,
+    pitch: 0,
+    hash:true
+});
+
+//This are the locations for your map to move along with your story
+//This is variable created an object called an JSON, you can add and remove chapters to the story. Make sure you reflect the changes in the sections with the text of your story.    
+var chapters = {
+    'losangeles': {
+        center: [29.0136, 41.1122],
+        zoom: 9.25,
+        bearing: 24.3,
+        pitch: 0,
+    },
+    'boyleheights': {
+   
+    },
+    'centralave': {
+        bearing: 0,
+        center: [28.9418, 41.0345],
+        zoom: 15.3,
+        pitch: 30,
+        speed: 0.5
+    
+    },
+    'chavezravine': {
+        bearing: 14.148182586771325,
+        center: [28.9409937, 41.0185484],
+        zoom: 15.75,
+        pitch: 30,
+        speed:0.5
+    },
+    'watts': {
+        bearing: 0,
+        center: [28.9596732, 41.0135977],
+        zoom: 15.75,
+        pitch: 30,
+        speed: 0.5
+    },
+    'unionstation': {
+        bearing: -0.00572483752739572,
+        center: [28.9692548, 41.0186612],
+        zoom: 18.75,
+        pitch: 30
+
+    },
+    'balik': {
+        bearing: 14.148182586771325,
+        center: [28.9709588, 41.0173499],
+        zoom: 17.75,
+        pitch: 30,
+        speed:0.5
+    },
+    'fee': {
+        bearing: 14.148182586771325,
+        center: [28.9692817, 41.0173447],
+        zoom: 16.5,
+        pitch: 30,
+        speed:0.5
+    },
+    'aznavur': {
+        bearing: 14.148182586771325,
+        center: [28.9550769, 41.0268645],
+        zoom: 15.5,
+        pitch: 30,
+        speed:0.5
+    },
+    'bayazidyanginlari': {
+        bearing: 14.148182586771325,
+        center: [28.9666795, 41.0100572],
+        zoom: 16,
+        pitch: 30,
+        speed:0.5
+    },
+};
+    
+//Function to run the story    
+// On every scroll event, check which element is on screen
+window.onscroll = function() {
+    var chapterNames = Object.keys(chapters);
+    for (var i = 0; i < chapterNames.length; i++) {
+        var chapterName = chapterNames[i];
+        if (isElementOnScreen(chapterName)) {
+            setActiveChapter(chapterName);
+            break;
+        }
+    }
+};
+
+var activeChapterName = 'losangeles'; //Change this to match the first chapter of your story
+function setActiveChapter(chapterName) {
+    if (chapterName === activeChapterName) return;
+
+    map.flyTo(chapters[chapterName]);
+
+    document.getElementById(chapterName).setAttribute('class', 'active');
+    document.getElementById(activeChapterName).setAttribute('class', '');
+
+    activeChapterName = chapterName;
+}
+
+function isElementOnScreen(id) {
+    var element = document.getElementById(id);
+    var bounds = element.getBoundingClientRect();
+    return bounds.top < window.innerHeight && bounds.bottom > 150;
+}
+//End of function to run the story    
+    
+
+//This JS Function asks Mapbox to get the bearing/center/zoom/pitch of the mouse position when clicked.
+//To turn off this function, add a "/*" at the beginning of the function and a "*/" at the end. This will turn the function into a comment.
+map.on('click', function (e) {
+    // e.lngLat is the longitude, latitude geographical position of the event
+    var loglatlng = e;
+    console.log(e);
+    prompt("Copy to clipboard: Ctrl+C, Enter",
+        "bearing: "+map.getBearing()+",\n"+
+        "center: ["+e.lngLat.lng+", "+e.lngLat.lat+"],\n"+
+        "zoom: "+map.getZoom()+",\n"+
+        "pitch: "+map.getPitch()
+    );
+});    
+
+</script>
+
+</body>
+</html>
